@@ -8,21 +8,41 @@
 
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
+import {createNativeStackNavigator} from '@react-navigation/native-stack';
 
 import {View, Text, StyleSheet, Button, Alert} from 'react-native';
+
+function HomeScreen() {
+  return (
+    <View style={styles.screen}>
+      <Text style={styles.text}>This Is Radical Oasis! What up?</Text>
+      <Button
+        onPress={() => Alert.alert('You are home and loved')}
+        title="Best Button"
+        color="#841584"
+        accessibilityLabel="Learn more about this purple button"
+      />
+    </View>
+  );
+}
+
+function DetailsScreen() {
+  return (
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+      <Text>Details Screen</Text>
+    </View>
+  );
+}
+
+const Stack = createNativeStackNavigator();
 
 const App = () => {
   return (
     <NavigationContainer>
-      <View style={styles.screen}>
-        <Text style={styles.text}>This Is We Wuv! What up?</Text>
-        <Button
-          onPress={() => Alert.alert('Simple Button pressed')}
-          title="Learn More"
-          color="#841584"
-          accessibilityLabel="Learn more about this purple button"
-        />
-      </View>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Details" component={DetailsScreen} />
+      </Stack.Navigator>
     </NavigationContainer>
   );
 };
