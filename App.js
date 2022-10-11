@@ -12,7 +12,6 @@ import {createNativeStackNavigator} from '@react-navigation/native-stack';
 //import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
 import {
-  Animated,
   View,
   Text,
   StyleSheet,
@@ -22,19 +21,9 @@ import {
   SafeAreaView,
   ScrollView,
 } from 'react-native';
+import CustomButton from './android/app/src/components/CustomButton';
 
 function HomeScreen({navigation}) {
-  // fadeAnim will be used as the value for opacity. Initial Value: 0
-  const fadeAnim = useRef(new Animated.Value(0)).current;
-
-  const fadeIn = () => {
-    // Will change fadeAnim value to 1 in 5 seconds
-    Animated.timing(fadeAnim, {
-      toValue: 1,
-      duration: 5000,
-    }).start();
-  };
-
   return (
     <SafeAreaView>
       <ScrollView>
@@ -43,20 +32,15 @@ function HomeScreen({navigation}) {
             source={require('./android/app/src/assets/images/brightdive.png')}
           />
           <Text style={styles.intro}>
-            BrightDive is a tool to guide you in healing yourself.
+            Bright Dive is a tool to guide you in healing yourself.
           </Text>
           <Text style={styles.intro}>
             It provides structure, encouragement, education
           </Text>
           <Text style={styles.intro}>
-            {' '}
             and total acceptance of you as you are now.
           </Text>
-          <Animated.View style={[styles.fadeinContainer, {opacity: fadeAnim}]}>
-            <Text style={styles.text} {...fadeIn}>
-              This Is Radical Oasis! What up?
-            </Text>
-          </Animated.View>
+          <CustomButton></CustomButton>
           <Button
             onPress={() => Alert.alert('You are home and loved')}
             title="Best Button"
@@ -65,10 +49,6 @@ function HomeScreen({navigation}) {
           />
           <Button
             title="Go to Details"
-            onPress={() => navigation.navigate('Details')}
-          />
-          <Button
-            title="Fade In"
             onPress={() => navigation.navigate('Details')}
           />
         </View>
@@ -102,10 +82,6 @@ const App = () => {
 };
 
 const styles = StyleSheet.create({
-  fadeinContainer: {
-    backgroundColor: 'powderblue',
-    padding: 20,
-  },
   text: {
     fontSize: 50,
     color: 'purple',
@@ -118,7 +94,6 @@ const styles = StyleSheet.create({
   },
   intro: {
     fontSize: 30,
-    fontWeight: 'bold',
     color: 'black',
     letterSpacing: 1.3,
     margin: 13,
