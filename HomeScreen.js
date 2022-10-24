@@ -40,22 +40,14 @@ function HomeScreen({navigation}) {
               outer dimensions...
             </Text>
             <CustomButton>ENTER THE GAME</CustomButton>
+
             <Text style={styles.subsubheading}>
-              If the demons are upon you in real life choose one of the options
-              below!
+              If the demons are upon you in real life enter the real help portal
+              below...
             </Text>
-            <LinearGradient
-              colors={['orange', '#3EB489', '#246EE9', 'black']}
-              style={styles.linearGradient}>
-              <CustomButton onPress={() => navigation.navigate('Details')}>
-                RAGEFUL
-              </CustomButton>
-
-              <CustomButton>OVERCOME WITH SHAME</CustomButton>
-
-              <CustomButton>TERRIFIED</CustomButton>
-              <CustomButton>SUICIDAL</CustomButton>
-            </LinearGradient>
+            <CustomButton onPress={() => navigation.navigate('RealHelpScreen')}>
+              Real Help
+            </CustomButton>
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -82,6 +74,8 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     marginTop: 20,
     marginBottom: 50,
+    borderColor: 'white',
+    borderWidth: 2,
   },
   intro: {
     fontSize: 30,

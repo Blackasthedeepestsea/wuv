@@ -25,18 +25,7 @@ import {
 import CustomButton from './android/app/src/components/CustomButton';
 import HomeScreen from './HomeScreen';
 import SplashScreen from './SplashScreen';
-
-function DetailsScreen({navigation}) {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Details Screen</Text>
-      <Button
-        title="Go to Home"
-        onPress={() => navigation.navigate('HomeScreen')}
-      />
-    </View>
-  );
-}
+import RealHelpScreen from './RealHelpScreen';
 
 //const Tab = createBottomTabNavigator();
 
@@ -56,7 +45,7 @@ const App = () => {
           name="HomeScreen"
           component={HomeScreen}
         />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen name="RealHelpScreen" component={RealHelpScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
