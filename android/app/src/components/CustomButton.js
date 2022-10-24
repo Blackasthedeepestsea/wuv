@@ -3,10 +3,8 @@ import {Text, TouchableOpacity, StyleSheet} from 'react-native';
 
 const CustomButton = () => {
   return (
-    <TouchableOpacity
-      onPress={() => console.log("Haha I'm about to be button")}
-      style={styles.container}>
-      <Text style={styles.title}> Begin Healing With Us </Text>
+    <TouchableOpacity style={styles.container}>
+      <Text style={styles.title}> LOSING IT: ANGER STYLE</Text>
     </TouchableOpacity>
   );
 };
