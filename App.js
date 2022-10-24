@@ -27,7 +27,15 @@ import CustomButton from './android/app/src/components/CustomButton';
 function HomeScreen({navigation}) {
   return (
     <LinearGradient
-      colors={['white', 'orange', '#3EB489', '#246EE9', 'black']}
+      colors={[
+        'white',
+        'white',
+        'orange',
+        '#3EB489',
+        '#246EE9',
+        'black',
+        'black',
+      ]}
       style={styles.linearGradient}>
       <SafeAreaView>
         <ScrollView>
@@ -36,34 +44,30 @@ function HomeScreen({navigation}) {
               style={styles.image}
               source={require('./android/app/src/assets/images/pumpkinparty.png')}
             />
-            <Text style={styles.intro}>Crawl Out of Hell: The App</Text>
-            <Text style={styles.subheading}>
-              For immediate help choose one of the options below!
+            <Text style={styles.intro}>
+              Crawl Out of Hell: Surviving the New World Order
             </Text>
-
-            <CustomButton
-              onPress={() => navigation.navigate('Details')}></CustomButton>
+            <Text style={styles.subheading}>
+              A game where YOU battle the multi-headed demons of the inner and
+              outer dimensions...
+            </Text>
+            <CustomButton>ENTER THE GAME</CustomButton>
+            <Text style={styles.subsubheading}>
+              If the demons are upon you in real life choose one of the options
+              below!
+            </Text>
             <LinearGradient
               colors={['orange', '#3EB489', '#246EE9', 'black']}
               style={styles.linearGradient}>
-              <CustomButton></CustomButton>
+              <CustomButton onPress={() => navigation.navigate('Details')}>
+                RAGEFUL
+              </CustomButton>
+
+              <CustomButton>OVERCOME WITH SHAME</CustomButton>
+
+              <CustomButton>TERRIFIED</CustomButton>
+              <CustomButton>SUICIDAL</CustomButton>
             </LinearGradient>
-            <CustomButton></CustomButton>
-            <Text style={styles.intro}>
-              For long term healing choose the option below:
-            </Text>
-            <CustomButton></CustomButton>
-            <Button
-              onPress={() => Alert.alert('You are home and loved')}
-              title="Best Button"
-              color="#3EB489"
-              accessibilityLabel="Learn more about this purple button"
-            />
-            <Button
-              title="Go to Details"
-              color="#246EE9"
-              onPress={() => navigation.navigate('Details')}
-            />
           </View>
         </ScrollView>
       </SafeAreaView>
@@ -102,18 +106,22 @@ const styles = StyleSheet.create({
   },
   image: {
     borderRadius: 150,
+    borderColor: 'white',
+    borderWidth: 2,
     margin: 15,
   },
   screen: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
-    backgroundColor: 'white',
+    backgroundColor: 'black',
     borderRadius: 20,
+    marginTop: 20,
+    marginBottom: 50,
   },
   intro: {
     fontSize: 30,
-    color: 'black',
+    color: 'orange',
     letterSpacing: 1.9,
     margin: 4,
     textAlign: 'center',
@@ -122,7 +130,16 @@ const styles = StyleSheet.create({
   },
   subheading: {
     fontSize: 23,
-    color: 'black',
+    color: 'orange',
+    letterSpacing: 1,
+    margin: 4,
+    textAlign: 'center',
+    fontFamily: 'Courier',
+    fontWeight: 'bold',
+  },
+  subsubheading: {
+    fontSize: 18,
+    color: 'white',
     letterSpacing: 1,
     margin: 4,
     textAlign: 'center',
