@@ -6,7 +6,7 @@
  * @flow strict-local
  */
 
-import React, {useRef} from 'react';
+import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
 import LinearGradient from 'react-native-linear-gradient';
@@ -23,63 +23,17 @@ import {
   ScrollView,
 } from 'react-native';
 import CustomButton from './android/app/src/components/CustomButton';
-
-function HomeScreen({navigation}) {
-  return (
-    <LinearGradient
-      colors={[
-        'white',
-        'white',
-        'orange',
-        '#3EB489',
-        '#246EE9',
-        'black',
-        'black',
-      ]}
-      style={styles.linearGradient}>
-      <SafeAreaView>
-        <ScrollView>
-          <View style={styles.screen}>
-            <Image
-              style={styles.image}
-              source={require('./android/app/src/assets/images/pumpkinparty.png')}
-            />
-            <Text style={styles.intro}>
-              Crawl Out of Hell: Surviving the New World Order
-            </Text>
-            <Text style={styles.subheading}>
-              A game where YOU battle the multi-headed demons of the inner and
-              outer dimensions...
-            </Text>
-            <CustomButton>ENTER THE GAME</CustomButton>
-            <Text style={styles.subsubheading}>
-              If the demons are upon you in real life choose one of the options
-              below!
-            </Text>
-            <LinearGradient
-              colors={['orange', '#3EB489', '#246EE9', 'black']}
-              style={styles.linearGradient}>
-              <CustomButton onPress={() => navigation.navigate('Details')}>
-                RAGEFUL
-              </CustomButton>
-
-              <CustomButton>OVERCOME WITH SHAME</CustomButton>
-
-              <CustomButton>TERRIFIED</CustomButton>
-              <CustomButton>SUICIDAL</CustomButton>
-            </LinearGradient>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </LinearGradient>
-  );
-}
+import HomeScreen from './HomeScreen';
+import SplashScreen from './SplashScreen';
 
 function DetailsScreen({navigation}) {
   return (
     <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
       <Text>Details Screen</Text>
-      <Button title="Go to Home" onPress={() => navigation.navigate('Home')} />
+      <Button
+        title="Go to Home"
+        onPress={() => navigation.navigate('HomeScreen')}
+      />
     </View>
   );
 }
@@ -91,8 +45,17 @@ const Stack = createNativeStackNavigator();
 const App = () => {
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Home">
-        <Stack.Screen name="Home" component={HomeScreen} />
+      <Stack.Navigator initialRouteName="SplashScreen">
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="SplashScreen"
+          component={SplashScreen}
+        />
+        <Stack.Screen
+          options={{headerShown: false}}
+          name="HomeScreen"
+          component={HomeScreen}
+        />
         <Stack.Screen name="Details" component={DetailsScreen} />
       </Stack.Navigator>
     </NavigationContainer>
