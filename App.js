@@ -9,29 +9,19 @@
 import React from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import {createNativeStackNavigator} from '@react-navigation/native-stack';
-import LinearGradient from 'react-native-linear-gradient';
-//import {createBottomTabNavigator} from '@react-navigation/bottom-tabs';
 
-import {
-  View,
-  Text,
-  StyleSheet,
-  Button,
-  Alert,
-  Image,
-  SafeAreaView,
-  ScrollView,
-} from 'react-native';
-import CustomButton from './android/app/src/components/CustomButton';
+import {StyleSheet} from 'react-native';
+
 import HomeScreen from './HomeScreen';
 import SplashScreen from './SplashScreen';
 import RealHelpScreen from './RealHelpScreen';
 
-//const Tab = createBottomTabNavigator();
+import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
-const Stack = createNativeStackNavigator();
+const Tab = createMaterialBottomTabNavigator();
 
-const App = () => {
+function StackNav() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="SplashScreen">
@@ -49,61 +39,54 @@ const App = () => {
       </Stack.Navigator>
     </NavigationContainer>
   );
-};
+}
 
-const styles = StyleSheet.create({
-  text: {
-    fontSize: 50,
-    color: 'purple',
-  },
-  image: {
-    borderRadius: 150,
-    borderColor: 'white',
-    borderWidth: 2,
-    margin: 15,
-  },
-  screen: {
-    flex: 1,
-    alignItems: 'center',
-    justifyContent: 'center',
-    backgroundColor: 'black',
-    borderRadius: 20,
-    marginTop: 20,
-    marginBottom: 50,
-  },
-  intro: {
-    fontSize: 30,
-    color: 'orange',
-    letterSpacing: 1.9,
-    margin: 4,
-    textAlign: 'center',
-    fontFamily: 'Courier',
-    fontWeight: 'bold',
-  },
-  subheading: {
-    fontSize: 23,
-    color: 'orange',
-    letterSpacing: 1,
-    margin: 4,
-    textAlign: 'center',
-    fontFamily: 'Courier',
-    fontWeight: 'bold',
-  },
-  subsubheading: {
-    fontSize: 18,
-    color: 'white',
-    letterSpacing: 1,
-    margin: 4,
-    textAlign: 'center',
-    fontFamily: 'Courier',
-    fontWeight: 'bold',
-  },
-  linearGradient: {
-    flex: 1,
-    paddingLeft: 15,
-    paddingRight: 15,
-    borderRadius: 5,
-  },
-});
+const Stack = createNativeStackNavigator();
+
+const App = () => {
+  return (
+    <>
+      <NavigationContainer>
+        <Tab.Navigator
+          barStyle={{backgroundColor: 'black'}}
+          labelStyle={{fontSize: 17}}
+          activeColor={'orange'}
+          inactiveColor={'white'}
+          shifting={true}>
+          <Tab.Screen
+            options={{
+              tabBarLabel: 'REAL HELP',
+              tabBarIcon: ({color}) => (
+                <MaterialCommunityIcons name="home" color={color} size={16} />
+              ),
+            }}
+            name="RealHelpScreen"
+            component={RealHelpScreen}
+          />
+          <Tab.Screen
+            options={{
+              tabBarLabel: 'HOME',
+              tabBarIcon: ({color}) => (
+                <MaterialCommunityIcons name="bell" color={color} size={16} />
+              ),
+            }}
+            name="Home"
+            component={HomeScreen}
+          />
+          <Tab.Screen
+            options={{
+              tabBarLabel: 'SPLASH SCREEN',
+              tabBarIcon: ({color}) => (
+                <MaterialCommunityIcons name="home" color={color} size={16} />
+              ),
+            }}
+            name="SplashScreen"
+            component={SplashScreen}
+          />
+        </Tab.Navigator>
+      </NavigationContainer>
+    </>
+  );
+};
 
 export default App;

@@ -79,7 +79,7 @@ const styles = StyleSheet.create({
   },
   intro: {
     fontSize: 30,
-    color: 'orange',
+    color: 'red',
     letterSpacing: 1.9,
     margin: 4,
     textAlign: 'center',
