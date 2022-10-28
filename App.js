@@ -15,6 +15,7 @@ import {StyleSheet} from 'react-native';
 import HomeScreen from './HomeScreen';
 import SplashScreen from './SplashScreen';
 import RealHelpScreen from './RealHelpScreen';
+import LoginScreen from './LoginScreen';
 
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -62,6 +63,16 @@ const App = () => {
             }}
             name="RealHelpScreen"
             component={RealHelpScreen}
+          />
+          <Tab.Screen
+            options={{
+              tabBarLabel: 'ENTER GAME',
+              tabBarIcon: ({color}) => (
+                <MaterialCommunityIcons name="home" color={color} size={16} />
+              ),
+            }}
+            name="LoginScreen"
+            component={LoginScreen}
           />
           <Tab.Screen
             options={{

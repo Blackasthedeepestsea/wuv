@@ -8,52 +8,41 @@ import {
   Image,
   SafeAreaView,
   ScrollView,
+  ImageBackground,
 } from 'react-native';
 
 import CustomButton from './android/app/src/components/CustomButton';
+import Form from './Form';
 
-function HomeScreen({navigation}) {
+function LoginScreen({navigation}) {
   return (
-    <LinearGradient
-      colors={[
-        'black',
-        'black',
-        'orange',
-        '#3EB489',
-        '#246EE9',
-        'black',
-        'black',
-      ]}
-      style={styles.linearGradient}>
-      <SafeAreaView>
-        <ScrollView>
-          <View style={styles.screen}>
-            <Image
-              style={styles.image}
-              source={require('./android/app/src/assets/images/pumpkinparty.png')}
-            />
+    <SafeAreaView>
+      <ScrollView>
+        <View style={styles.screen}>
+          <LinearGradient
+            colors={[
+              'black',
+              'black',
+              'orange',
+              '#3EB489',
+              '#246EE9',
+              'black',
+              'black',
+            ]}
+            style={styles.linearGradient}>
             <Text style={styles.intro}>
               Crawl Out of Hell: Surviving the New World Order
             </Text>
-            <Text style={styles.subheading}>
-              A game where YOU battle the multi-headed demons of the inner and
-              outer dimensions...
-            </Text>
-            <CustomButton onPress={() => navigation.navigate('LoginScreen')}>
-              ENTER THE GAME
+            <Text style={styles.subheading}></Text>
+            <Text style={styles.subsubheading}>1 Step Away from Game Play</Text>
+            <Form></Form>
+            <CustomButton onPress={() => navigation.navigate('GameScreen')}>
+              Enter Game
             </CustomButton>
-
-            <Text style={styles.subsubheading}>
-              If the demons are upon you in real life enter the real help portal
-              below...
-            </Text>
-            <CustomButton onPress={() => navigation.navigate('RealHelpScreen')}>
-              Real Help
-            </CustomButton>
-          </View>
-        </ScrollView>
-      </SafeAreaView>
-    </LinearGradient>
+          </LinearGradient>
+        </View>
+      </ScrollView>
+    </SafeAreaView>
   );
 }
 
@@ -62,18 +51,15 @@ const styles = StyleSheet.create({
     fontSize: 50,
     color: 'purple',
   },
-  image: {
-    borderRadius: 150,
-    borderColor: 'white',
-    borderWidth: 2,
-    margin: 15,
+  backgroundImage: {
+    flex: 1,
+    justifyContent: 'center',
   },
   screen: {
     flex: 1,
     alignItems: 'center',
     justifyContent: 'center',
     backgroundColor: 'black',
-    borderRadius: 20,
     marginTop: 20,
     marginBottom: 50,
     borderColor: 'white',
@@ -81,7 +67,7 @@ const styles = StyleSheet.create({
   },
   intro: {
     fontSize: 30,
-    color: 'red',
+    color: 'white',
     letterSpacing: 1.9,
     margin: 4,
     textAlign: 'center',
@@ -114,4 +100,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default HomeScreen;
+export default LoginScreen;
