@@ -16,33 +16,37 @@ import Form from './Form';
 
 function LoginScreen({navigation}) {
   return (
-    <SafeAreaView>
-      <ScrollView>
-        <View style={styles.screen}>
-          <LinearGradient
-            colors={[
-              'black',
-              'black',
-              'orange',
-              '#3EB489',
-              '#246EE9',
-              'black',
-              'black',
-            ]}
-            style={styles.linearGradient}>
+    <LinearGradient
+      colors={[
+        'black',
+        'black',
+        'orange',
+        '#3EB489',
+        '#246EE9',
+        'black',
+        'black',
+      ]}
+      style={styles.linearGradient}>
+      <SafeAreaView>
+        <ScrollView>
+          <View style={styles.screen}>
             <Text style={styles.intro}>
               Crawl Out of Hell: Surviving the New World Order
             </Text>
             <Text style={styles.subheading}></Text>
             <Text style={styles.subsubheading}>1 Step Away from Game Play</Text>
-            <Form></Form>
+            <LinearGradient
+              colors={['orange', '#3EB489', '#246EE9']}
+              style={styles.linearGradient}>
+              <Form></Form>
+            </LinearGradient>
             <CustomButton onPress={() => navigation.navigate('GameScreen')}>
               Enter Game
             </CustomButton>
-          </LinearGradient>
-        </View>
-      </ScrollView>
-    </SafeAreaView>
+          </View>
+        </ScrollView>
+      </SafeAreaView>
+    </LinearGradient>
   );
 }
 
