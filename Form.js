@@ -10,6 +10,7 @@ function Form() {
         label="User Name"
         textInputConfig={{
           placeholder: 'BooHoo',
+          maxLength: 20,
         }}
       />
       <FormInput
@@ -19,8 +20,18 @@ function Form() {
           placeholder: 'booho@boohoo.com',
         }}
       />
-      <FormInput label="Password" />
-      <FormInput label="Confirm Password" />
+      <FormInput
+        label="Password"
+        textInputConfig={{
+          placeholder: '***********',
+        }}
+      />
+      <FormInput
+        label="Confirm Password"
+        textInputConfig={{
+          placeholder: '***********',
+        }}
+      />
     </View>
   );
 }
