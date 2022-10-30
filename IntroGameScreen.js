@@ -15,17 +15,27 @@ import {useNavigation} from '@react-navigation/native';
 import CustomButton from './android/app/src/components/CustomButton';
 import Form from './Form';
 
-function LoginScreen() {
-  const navigation = useNavigation();
+function IntroGameScreen() {
   return (
     <SafeAreaView>
       <ScrollView>
         <View style={styles.screen}>
+          <Image
+            style={styles.image}
+            source={require('./android/app/src/assets/images/pumpkinparty.png')}
+          />
           <Text style={styles.intro}>
-            Crawl Out of Hell: Surviving the New World Order
+            You are the Nobody and the New World Order has captured your soul!
           </Text>
-          <Text style={styles.subsubheading}>1 Step Away from Game Play</Text>
-          <Text style={styles.subheading}>Register</Text>
+          <Text style={styles.subsubheading}>
+            You will save the World by ripping your own Soul back out of the
+            hands of the NWO!
+          </Text>
+          <Text style={styles.subsubheading}>
+            Move through hostile territory by completing challenges and
+            navigating your way to the NWO's headquarters.
+          </Text>
+          <Text style={styles.subheading}>First Challenge</Text>
           <LinearGradient
             colors={['orange', '#3EB489', '#246EE9']}
             style={[
@@ -55,6 +65,12 @@ const styles = StyleSheet.create({
   text: {
     fontSize: 50,
     color: 'purple',
+  },
+  image: {
+    borderRadius: 150,
+    borderColor: 'white',
+    borderWidth: 2,
+    margin: 15,
   },
   input: {
     backgroundColor: 'grey',
@@ -118,4 +134,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default LoginScreen;
+export default IntroGameScreen;

@@ -16,12 +16,12 @@ import HomeScreen from './HomeScreen';
 import SplashScreen from './SplashScreen';
 import RealHelpScreen from './RealHelpScreen';
 import LoginScreen from './LoginScreen';
+import IntroGameScreen from './IntroGameScreen';
 
 import {createMaterialBottomTabNavigator} from '@react-navigation/material-bottom-tabs';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 
 const Tab = createMaterialBottomTabNavigator();
-
 function StackNav() {
   return (
     <NavigationContainer>
@@ -86,13 +86,13 @@ const App = () => {
           />
           <Tab.Screen
             options={{
-              tabBarLabel: 'SPLASH SCREEN',
+              tabBarLabel: 'Intro game',
               tabBarIcon: ({color}) => (
                 <MaterialCommunityIcons name="home" color={color} size={16} />
               ),
             }}
-            name="SplashScreen"
-            component={SplashScreen}
+            name="IntroGameScreen"
+            component={IntroGameScreen}
           />
         </Tab.Navigator>
       </NavigationContainer>
