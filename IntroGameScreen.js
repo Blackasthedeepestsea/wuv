@@ -48,13 +48,8 @@ function IntroGameScreen() {
                 marginVertical: 30,
               },
             ]}>
-            <View>
-              <Form></Form>
-            </View>
+            <View></View>
           </LinearGradient>
-          <CustomButton onPress={() => navigation.navigate('HomeScreen')}>
-            Enter Game
-          </CustomButton>
         </View>
       </ScrollView>
     </SafeAreaView>

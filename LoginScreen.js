@@ -16,7 +16,6 @@ import CustomButton from './android/app/src/components/CustomButton';
 import Form from './Form';
 
 function LoginScreen() {
-  const navigation = useNavigation();
   return (
     <SafeAreaView>
       <ScrollView>
