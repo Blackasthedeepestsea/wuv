@@ -13,6 +13,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: false}));
 
 app.use('/api/challenge', require('./routes/challengeRoutes'));
+app.use('/api/user', require('./routes/userRoutes'));
 
 app.use(errorHandler);
 
