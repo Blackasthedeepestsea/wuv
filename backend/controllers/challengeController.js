@@ -1,12 +1,13 @@
 const asyncHandler = require('express-async-handler');
 
 const Challenge = require('../models/challengeModel');
+const User = require('../models/userModel');
 // @desc get challenge
 // @route GET /api/challenge
 // @access Private
 
 const getChallenge = asyncHandler(async (req, res) => {
-  const challenges = await Challenge.find();
+  const challenges = await Challenge.find({user: req.user.id});
   res.status(200).json(challenges);
 });
 
@@ -23,6 +24,7 @@ const setChallenge = asyncHandler(async (req, res) => {
 
   const challenges = await Challenge.create({
     text: req.body.text,
+    user: req.user.id,
   });
   res.status(200).json(challenges);
 });
@@ -37,7 +39,17 @@ const updateChallenge = asyncHandler(async (req, res) => {
     res.status(400);
     throw new Error('Challenge not found');
   }
+  // Check for user
+  if (!req.user) {
+    res.status(401);
+    throw new Error('User not found');
+  }
 
+  // Make sure the logged in user matches the goal user
+  if (challenges.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('User not authorized');
+  }
   const updatedChallenge = await Challenge.findByIdAndUpdate(
     req.params.id,
     req.body,
@@ -57,6 +69,17 @@ const deleteChallenge = asyncHandler(async (req, res) => {
   if (!challenges) {
     res.status(400);
     throw new Error('Challenge not found');
+  }
+  // Check for user
+  if (!req.user) {
+    res.status(401);
+    throw new Error('User not found');
+  }
+
+  // Make sure the logged in user matches the goal user
+  if (challenges.user.toString() !== req.user.id) {
+    res.status(401);
+    throw new Error('User not authorized');
   }
 
   await challenges.remove();

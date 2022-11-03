@@ -9,7 +9,12 @@ const {
   deleteChallenge,
 } = require('../controllers/challengeController');
 
-router.route('/').get(getChallenge).post(setChallenge);
-router.route('/:id').delete(deleteChallenge).put(updateChallenge);
+const {protect} = require('../middleware/authMiddleware');
+
+router.route('/').get(protect, getChallenge).post(protect, setChallenge);
+router
+  .route('/:id')
+  .delete(protect, deleteChallenge)
+  .put(protect, updateChallenge);
 
 module.exports = router;
