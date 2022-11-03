@@ -8,9 +8,11 @@ const {
   getMe,
 } = require('../controllers/userController');
 
+const {protect} = require('../middleware/authMiddleware');
+
 router.post('/', registerUser);
 router.post('/login', loginUser);
-router.get('/me', getMe);
+router.get('/me', protect, getMe);
 //router.route('/').get(getChallenge).post(setChallenge);
 //router.route('/:id').delete(deleteChallenge).put(updateChallenge);
 
